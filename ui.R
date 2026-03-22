@@ -13,8 +13,10 @@ library(DT)
 
 file_path <- "sample_disposition_dashboard_data.xlsx"
 
-berg <- read_excel(file_path, sheet = "Berg")
-juni <- read_excel(file_path, sheet = "Juni")
+# Updated study name"
+
+parent <- read_excel(file_path, sheet = "parent")
+ole <- read_excel(file_path, sheet = "ole")
 
 #---------------------------
 # UI
@@ -41,8 +43,8 @@ ui <- dashboardPage(
     selectInput(
       "study",
       "Select Study",
-      choices = c("Berg","Juni"),
-      selected = "Berg"
+      choices = c("parent","ole"),
+      selected = "parent"
     ),
     
     uiOutput("phase_ui"),

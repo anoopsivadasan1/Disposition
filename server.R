@@ -7,14 +7,16 @@ library(DT)
 
 #---------------------------
 # Load Excel data
-#---------------------------
+
 
 # file_path <- "C:/Users/cex/OneDrive/Documents/Shiny_Practice/New folder/sample_disposition_dashboard_data.xlsx"
 
 file_path <- "sample_disposition_dashboard_data.xlsx"
 
-berg <- read_excel(file_path, sheet = "Berg")
-juni <- read_excel(file_path, sheet = "Juni")
+# Updated study name"
+
+parent <- read_excel(file_path, sheet = "parent")
+ole <- read_excel(file_path, sheet = "ole")
 
 
 #---------------------------
@@ -31,7 +33,7 @@ server <- function(input, output, session) {
     
     req(input$study)
     
-    if(input$study == "Berg"){
+    if(input$study == "parent"){
       
       selectInput(
         "phase",
@@ -52,7 +54,7 @@ server <- function(input, output, session) {
     
     req(input$study)
     
-    if(input$study == "Berg"){
+    if(input$study == "parent"){
       
       req(input$phase)
       
@@ -79,9 +81,9 @@ server <- function(input, output, session) {
     
     req(input$study)
     
-    if(input$study == "Berg"){
+    if(input$study == "parent"){
       
-      df <- berg
+      df <- parent
       
       req(input$phase)
       
@@ -105,7 +107,7 @@ server <- function(input, output, session) {
       
     } else {
       
-      df <- juni %>% filter(OLEFL == "Y")
+      df <- ole %>% filter(OLEFL == "Y")
       
     }
     
@@ -121,7 +123,7 @@ server <- function(input, output, session) {
     
     df <- data()
     
-    if(input$study == "Berg"){
+    if(input$study == "parent"){
       
       summary <- df %>%
         filter(!is.na(COMPSTDI)) %>%
@@ -155,7 +157,7 @@ server <- function(input, output, session) {
     
     df <- data()
     
-    if(input$study == "Berg"){
+    if(input$study == "parent"){
       
       summary <- df %>%
         filter(DSSTDRSI != "") %>%
@@ -189,7 +191,7 @@ server <- function(input, output, session) {
     
     df <- data()
     
-    if(input$study == "Berg"){
+    if(input$study == "parent"){
       
       summary <- df %>%
         filter(!is.na(DISCTRT)) %>%
@@ -223,7 +225,7 @@ server <- function(input, output, session) {
     
     df <- data()
     
-    if(input$study == "Berg"){
+    if(input$study == "parent"){
       
       summary <- df %>%
         filter(DSTRTRS != "") %>%
@@ -257,7 +259,7 @@ server <- function(input, output, session) {
     
     df <- data()
     
-    if(input$study == "Berg"){
+    if(input$study == "parent"){
       
       df %>% count(DSSTDRSI)
       
