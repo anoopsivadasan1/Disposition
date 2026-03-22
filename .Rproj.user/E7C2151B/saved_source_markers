@@ -1,0 +1,1 @@
+{"active_set":"Publish Content Issues","sets":[{"name":"Publish Content Issues","base_path":"~/Shiny_Practice/New folder/./","markers":[{"type":1,"path":"~/Shiny_Practice/New folder/app_Disp_Portfolio style.R","line":12,"column":1,"message":"Paths should be to files within the project directory.","log_path":"","log_line":-1,"show_error_list":true}],"is_diagnostics":false}]}

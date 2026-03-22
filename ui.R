@@ -1,0 +1,130 @@
+library(shiny)
+library(shinydashboard)
+library(readxl)
+library(dplyr)
+library(plotly)
+library(DT)
+
+#---------------------------
+# Load Excel data
+#---------------------------
+
+# file_path <- "C:/Users/cex/OneDrive/Documents/Shiny_Practice/New folder/sample_disposition_dashboard_data.xlsx"
+
+file_path <- "sample_disposition_dashboard_data.xlsx"
+
+berg <- read_excel(file_path, sheet = "Berg")
+juni <- read_excel(file_path, sheet = "Juni")
+
+#---------------------------
+# UI
+#---------------------------
+
+ui <- dashboardPage(
+  
+  skin = "green",
+  
+  dashboardHeader(title = "Disposition Dashboard"),
+  
+  dashboardSidebar(
+    
+    sidebarMenu(
+      
+      menuItem("Charts", tabName = "charts", icon = icon("chart-bar")),
+      menuItem("Tables", tabName = "tables", icon = icon("table")),
+      menuItem("Listings", tabName = "listing", icon = icon("list"))
+      
+    ),
+    
+    br(),
+    
+    selectInput(
+      "study",
+      "Select Study",
+      choices = c("Berg","Juni"),
+      selected = "Berg"
+    ),
+    
+    uiOutput("phase_ui"),
+    
+    uiOutput("cohort_ui")
+    
+  ),
+  
+  dashboardBody(
+    
+    tabItems(
+      
+      #---------------- Charts ----------------#
+      
+      tabItem(tabName = "charts",
+              
+              fluidRow(
+                
+                box(width=6,
+                    title="Study Disposition",
+                    status="primary",
+                    solidHeader=TRUE,
+                    plotlyOutput("pie1")),
+                
+                box(width=6,
+                    title="Study Discontinuation Reasons",
+                    status="primary",
+                    solidHeader=TRUE,
+                    plotlyOutput("bar1"))
+                
+              ),
+              
+              fluidRow(
+                
+                box(width=6,
+                    title="Drug Disposition",
+                    status="primary",
+                    solidHeader=TRUE,
+                    plotlyOutput("pie2")),
+                
+                box(width=6,
+                    title="Drug Discontinuation Reasons",
+                    status="primary",
+                    solidHeader=TRUE,
+                    plotlyOutput("bar2"))
+                
+              )
+              
+      ),
+      
+      #---------------- Tables ----------------#
+      
+      tabItem(tabName = "tables",
+              
+              fluidRow(
+                
+                box(width=12,
+                    title="Summary Table",
+                    status="primary",
+                    solidHeader=TRUE,
+                    dataTableOutput("summary"))
+                
+              )
+              
+      ),
+      
+      #---------------- Listings ----------------#
+      
+      tabItem(tabName = "listing",
+              
+              fluidRow(
+                
+                box(width=12,
+                    title="Subject Listing",
+                    status="primary",
+                    solidHeader=TRUE,
+                    dataTableOutput("listing"))
+                
+              )
+              
+      )
+      
+    )
+  )
+)
