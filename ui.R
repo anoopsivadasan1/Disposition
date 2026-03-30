@@ -9,8 +9,6 @@ library(DT)
 # Load Excel data
 #---------------------------
 
-# file_path <- "C:/Users/cex/OneDrive/Documents/Shiny_Practice/New folder/sample_disposition_dashboard_data.xlsx"
-
 file_path <- "sample_disposition_dashboard_data.xlsx"
 
 berg <- read_excel(file_path, sheet = "Berg")
