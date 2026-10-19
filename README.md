@@ -1,5 +1,4 @@
-Disposition Dashboard — Overview
-The Disposition Dashboard is an interactive Shiny application designed to review and visualize subject disposition data from two clinical studies (Berg and Juni). It provides a unified interface for exploring study progress, discontinuation patterns, and subject listings using dynamic filters and interactive charts.
+Disposition Dashboard 
 
 📌 Key Features
 1. Dual‑Study Support
