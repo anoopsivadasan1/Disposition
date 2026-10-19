@@ -9,12 +9,15 @@ library(DT)
 # Load Excel data
 #---------------------------
 
-# file_path <- "C:/Users/cex/OneDrive/Documents/Shiny_Practice/New folder/sample_disposition_dashboard_data.xlsx"
 
 file_path <- "sample_disposition_dashboard_data.xlsx"
 
 berg <- read_excel(file_path, sheet = "Berg")
 juni <- read_excel(file_path, sheet = "Juni")
+
+tomato   <- "#FF6347"   # Tomato
+cadet    <- "#5F9EA0"   # Cadet Blue
+
 
 
 #---------------------------
@@ -130,7 +133,9 @@ server <- function(input, output, session) {
       plot_ly(summary,
               labels = ~COMPSTDI,
               values = ~n,
-              type = "pie")
+              type = "pie",
+              marker = list(colors = c(cadet, tomato))
+              )
       
     } else {
       
@@ -141,7 +146,9 @@ server <- function(input, output, session) {
       plot_ly(summary,
               labels = ~COMPSTDO,
               values = ~n,
-              type = "pie")
+              type = "pie",
+              marker = list(colors = c(cadet, tomato))
+              )
       
     }
     
@@ -164,7 +171,9 @@ server <- function(input, output, session) {
       plot_ly(summary,
               x = ~DSSTDRSI,
               y = ~n,
-              type = "bar")
+              type = "bar",
+              marker = list(color = cadet)
+      )
       
     } else {
       
@@ -175,7 +184,9 @@ server <- function(input, output, session) {
       plot_ly(summary,
               x = ~STDDRSO,
               y = ~n,
-              type = "bar")
+              type = "bar",
+              marker = list(color = cadet)
+      )
       
     }
     
@@ -198,7 +209,9 @@ server <- function(input, output, session) {
       plot_ly(summary,
               labels = ~DISCTRT,
               values = ~n,
-              type = "pie")
+              type = "pie",
+              marker = list(colors = c(cadet, tomato))
+      )
       
     } else {
       
@@ -209,7 +222,9 @@ server <- function(input, output, session) {
       plot_ly(summary,
               labels = ~DISTRTO,
               values = ~n,
-              type = "pie")
+              type = "pie",
+              marker = list(colors = c(cadet, tomato))
+      )
       
     }
     
@@ -232,7 +247,9 @@ server <- function(input, output, session) {
       plot_ly(summary,
               x = ~DSTRTRS,
               y = ~n,
-              type = "bar")
+              type = "bar",
+              marker = list(color = cadet)
+      )
       
     } else {
       
@@ -243,7 +260,9 @@ server <- function(input, output, session) {
       plot_ly(summary,
               x = ~TRTDRSO,
               y = ~n,
-              type = "bar")
+              type = "bar",
+              marker = list(color = cadet)
+      )
       
     }
     

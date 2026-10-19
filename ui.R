@@ -17,7 +17,7 @@ juni <- read_excel(file_path, sheet = "Juni")
 #---------------------------
 # UI
 #---------------------------
-
+  
 ui <- dashboardPage(
   
   skin = "green",
@@ -50,6 +50,15 @@ ui <- dashboardPage(
   ),
   
   dashboardBody(
+    
+    # Global font override
+    tags$head(
+      tags$style(HTML("
+      * {
+        font-family: 'Courier New', Courier, monospace !important;
+      }
+    "))
+    ),
     
     tabItems(
       
